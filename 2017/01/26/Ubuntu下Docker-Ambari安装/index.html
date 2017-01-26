@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/1.png">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/2.png">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/3.png">
-<meta property="og:updated_time" content="2017-01-26T04:39:09.633Z">
+<meta property="og:updated_time" content="2017-01-26T04:41:19.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下Docker-Ambari安装">
 <meta name="twitter:description" content="在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：
@@ -65,9 +65,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -108,24 +108,29 @@
 <p>7、                $ docker run sequenceiq/ambari:lastest    在容器内运行镜像<br>                     在用这个命令运行镜像时会出现这样的错误：<br>           Failed to mount tmpfs at /run: Operation not permitted<br>                  Failed to mount cgroup at /sys/fs/cgroup/systemd: Operation not permitted<br>                  [!!!!] Failed to mount API filesystems, freezing<br>                     这样在命令中增加参数，下面的命令即可解决这个问题<br>                     $ docker run -t -i –privileged=true  sequenceiq/ambari:lastest /bin/bash</p>
 <pre><code>【如果仍存在问题试用这个命令】
 
-      $ docker run -t -i --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 sequenceiq/ambari:lastest /bin/bash
+ $ docker run -t -i --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 sequenceiq/ambari:lastest /bin/bash
 </code></pre><p>8、               在我的虚拟机中还出现的问题是<br>                  <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/1.png" alt=""></p>
-<p>  解决这个问题只需要安装下autofs这个包即可。<br>                       $ apt-get install autofs<br>在运行镜像的过程中还出现过几个问题没有记录，都是因为缺少某些包或者证书导致，最好在安装的最开始先把可能会导致出错的包装上<br>                       $ apt-get install apt-transport-https ca-certificates   </p>
-<p>目前仍存在一个LSB的问题。。。。。。。解决ing======</p>
-<p>###########################################################################华丽丽的分割线</p>
-<p>5、          一直解决不了这个问题，忽然去想是不是镜像的原因，然后查看可用的其他镜像，然后就悲剧了。。。兜兜转转一大圈发现sequenceiq/ambari已经被丢弃<br>              <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/2.png" alt=""></p>
-<pre><code>   开始pull新的镜像，根据描述采用 datalayer/ambari
+<pre><code>解决这个问题只需要安装下autofs这个包即可。
+     $ apt-get install autofs
+
+在运行镜像的过程中还出现过几个问题没有记录，都是因为缺少某些包或者证书导致，最好在安装的最开始先把可能会导致出错的包装上
+     $ apt-get install apt-transport-https ca-certificates   
+
+目前仍存在一个LSB的问题。。。。。。。解决ing======
+</code></pre><p>###########################################################################华丽丽的分割线</p>
+<p>5、                 一直解决不了这个问题，忽然去想是不是镜像的原因，然后查看可用的其他镜像，然后就悲剧了。。。兜兜转转一大圈发现sequenceiq/ambari已经被丢弃<br>                     <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/2.png" alt=""></p>
+<pre><code>开始pull新的镜像，根据描述采用 datalayer/ambari
 $ docker pull datalayer/ambari:latest         等待半小时左右
 </code></pre><p>6、                启动docker的守护进程<br>                     $ docker run daemon &amp;<br>                   【该命令一直启动着，终端不能关。可以用$nohup docker run daemon &amp;后台运行】</p>
-<p>7、                $ docker run -i -t –privileged=true datalayer/ambari:latest /bin/bash    在容器内运行镜像<br>                        bingo！！！！ 成功！<br>                    <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/3.png" alt=""></p>
+<p>7、                $ docker run -i -t –privileged=true datalayer/ambari:latest /bin/bash    在容器内运行镜像<br>                        bingo！！！！ 成功！<br>                     <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/3.png" alt=""></p>
 <pre><code>有帮助的命令提示
-![](Ubuntu下Docker-Ambari安装/4.png)
+ ![](Ubuntu下Docker-Ambari安装/4.png)
 
 配置ambari集群的key
-![](Ubuntu下Docker-Ambari安装/5.png)
+ ![](Ubuntu下Docker-Ambari安装/5.png)
  #####################################################################################                      
  在进入ambari容器时有防火墙的一个Failure，后来发现这个可以忽略。。。。
-![](Ubuntu下Docker-Ambari安装/6.png)
+ ![](Ubuntu下Docker-Ambari安装/6.png)
 
     #######  但是！！！！！！！！！！！！！！ 管理ambari的web页面并不能访问！后来去找ambari官网看配置
     【戳网址——&gt;http://platform.datalayer.io/guide/latest/docker/ambari/】
@@ -139,7 +144,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydw45lx0001a09ndv009ugk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydw6xtd0001949nln1pxuqn" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -150,7 +155,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
   
   
     <a href="/2017/01/26/Hexo-Github-搭建个人博客/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
+      <strong class="article-nav-caption">Ancien</strong>
       <div class="article-nav-title">Hexo + Github 搭建个人博客</div>
     </a>
   
@@ -183,7 +188,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -212,7 +217,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
