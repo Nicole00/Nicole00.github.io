@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -108,28 +108,28 @@
 $ docker pull datalayer/ambari:latest         等待半小时左右
 </code></pre><p>6、                启动docker的守护进程<br>                     $ docker run daemon &amp;<br>                   【该命令一直启动着，终端不能关。可以用$nohup docker run daemon &amp;后台运行】</p>
 <p>7、                $ docker run -i -t –privileged=true datalayer/ambari:latest /bin/bash    在容器内运行镜像<br>                        bingo！！！！ 成功！<br>                     <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/3.png" alt=""></p>
-<pre><code>有帮助的命令提示
- ![](Ubuntu下Docker-Ambari安装/4.png)
+<pre><code>   有帮助的命令提示
+![](Ubuntu下Docker-Ambari安装/4.png)
 
-配置ambari集群的key
- ![](Ubuntu下Docker-Ambari安装/5.png)
- #####################################################################################                      
- 在进入ambari容器时有防火墙的一个Failure，后来发现这个可以忽略。。。。
- ![](Ubuntu下Docker-Ambari安装/6.png)
+   配置ambari集群的key
+![](Ubuntu下Docker-Ambari安装/5.png)
+#####################################################################################                      
+   在进入ambari容器时有防火墙的一个Failure，后来发现这个可以忽略。。。。
+![](Ubuntu下Docker-Ambari安装/6.png)
 
-    #######  但是！！！！！！！！！！！！！！ 管理ambari的web页面并不能访问！后来去找ambari官网看配置
-    【戳网址——&gt;http://platform.datalayer.io/guide/latest/docker/ambari/】
-      OK！发现要访问的网址是http://localhost:8080，而不是终端指导的 http://ambari.datalayer.io.local:8080。【多次测试发现localhost不是指本地ip，而是终端给出的172.17.0.2】
+   #######  但是！！！！！！！！！！！！！！ 管理ambari的web页面并不能访问！后来去找ambari官网看配置
+   【戳网址——&gt;http://platform.datalayer.io/guide/latest/docker/ambari/】
+     OK！发现要访问的网址是http://localhost:8080，而不是终端指导的 http://ambari.datalayer.io.local:8080。【多次测试发现localhost不是指本地ip，而是终端给出的172.17.0.2】
 
 
-    哈哈哈哈~~~最终ambari的管理页面如下
-   ![](Ubuntu下Docker-Ambari安装/7.png)
+   哈哈哈哈~~~最终ambari的管理页面如下
+![](Ubuntu下Docker-Ambari安装/7.png)
 </code></pre><p>【其他有用操作】<br>     退出一个容器： Ctrl+P 然后 Ctrl+Q</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydw6xtd0001949nln1pxuqn" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydw8hvu0002009ncsc4dt1n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -165,7 +165,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/26/Hexo-Github-搭建个人博客/" data-id="ciydw6xt40000949nz53k2vm4" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/01/26/Hexo-Github-搭建个人博客/" data-id="ciydw8hvi0000009nntycpfmt" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +210,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/25/hello-world/" data-id="ciydw6xth0002949nacbfv7nq" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/01/25/hello-world/" data-id="ciydw8hvp0001009nbr56umj3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -245,7 +245,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -274,7 +274,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
