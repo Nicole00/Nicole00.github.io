@@ -20,7 +20,9 @@
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/1.png">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/2.png">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/3.png">
-<meta property="og:updated_time" content="2017-01-26T04:42:30.817Z">
+<meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/4.png">
+<meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/5.png">
+<meta property="og:updated_time" content="2017-01-26T04:43:24.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下Docker-Ambari安装">
 <meta name="twitter:description" content="在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：
@@ -122,13 +124,8 @@
 <pre><code>开始pull新的镜像，根据描述采用 datalayer/ambari
 $ docker pull datalayer/ambari:latest         等待半小时左右
 </code></pre><p>6、                启动docker的守护进程<br>                     $ docker run daemon &amp;<br>                   【该命令一直启动着，终端不能关。可以用$nohup docker run daemon &amp;后台运行】</p>
-<p>7、                $ docker run -i -t –privileged=true datalayer/ambari:latest /bin/bash    在容器内运行镜像<br>                        bingo！！！！ 成功！<br>                     <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/3.png" alt=""></p>
-<pre><code>   有帮助的命令提示
-![](Ubuntu下Docker-Ambari安装/4.png)
-
-   配置ambari集群的key
-![](Ubuntu下Docker-Ambari安装/5.png)
-#####################################################################################                      
+<p>7、                $ docker run -i -t –privileged=true datalayer/ambari:latest /bin/bash    在容器内运行镜像<br>                        bingo！！！！ 成功！<br>                     <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/3.png" alt=""><br>                        有帮助的命令提示<br>                     <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/4.png" alt=""><br>                        配置ambari集群的key<br>                     <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/5.png" alt=""></p>
+<pre><code>#####################################################################################                      
    在进入ambari容器时有防火墙的一个Failure，后来发现这个可以忽略。。。。
 ![](Ubuntu下Docker-Ambari安装/6.png)
 
@@ -144,7 +141,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydw8hvu0002009ncsc4dt1n" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydw9ngm00015c9nor8zy799" class="article-share-link">Share</a>
       
       
     </footer>
