@@ -5,18 +5,20 @@
   
   <title>Ubuntu下Docker-Ambari安装 | 仰望星空 脚踏实地</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：
+  <meta name="description" content="原创文章      Nicole
+在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：
 一、安装Docker1、  运行命令，查看ubuntu内核版本，docker要求其大于3.10 且ubuntu是64位。  $uname -r           
 2、  更新  $apt-get update                
-3、 安装docker最新版本 $ apt-get install apt-t">
+3、 安装docker最新版本 $ apt-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu下Docker-Ambari安装">
 <meta property="og:url" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/index.html">
 <meta property="og:site_name" content="仰望星空 脚踏实地">
-<meta property="og:description" content="在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：
+<meta property="og:description" content="原创文章      Nicole
+在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：
 一、安装Docker1、  运行命令，查看ubuntu内核版本，docker要求其大于3.10 且ubuntu是64位。  $uname -r           
 2、  更新  $apt-get update                
-3、 安装docker最新版本 $ apt-get install apt-t">
+3、 安装docker最新版本 $ apt-">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/1.png">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/2.png">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/3.png">
@@ -24,13 +26,14 @@
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/5.png">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/6.png">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/7.png">
-<meta property="og:updated_time" content="2017-01-26T06:40:49.923Z">
+<meta property="og:updated_time" content="2017-01-26T06:46:04.149Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下Docker-Ambari安装">
-<meta name="twitter:description" content="在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：
+<meta name="twitter:description" content="原创文章      Nicole
+在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：
 一、安装Docker1、  运行命令，查看ubuntu内核版本，docker要求其大于3.10 且ubuntu是64位。  $uname -r           
 2、  更新  $apt-get update                
-3、 安装docker最新版本 $ apt-get install apt-t">
+3、 安装docker最新版本 $ apt-">
 <meta name="twitter:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/1.png">
   
     <link rel="alternate" href="/atom.xml" title="仰望星空 脚踏实地" type="application/atom+xml">
@@ -102,7 +105,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：</p>
+        <p><em>原创文章      Nicole</em></p>
+<p><strong>在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：</strong></p>
 <p>一、安装Docker<br>1、  运行命令，查看ubuntu内核版本，docker要求其大于3.10 且ubuntu是64位。<br>  <code>$uname -r</code>           </p>
 <p>2、  更新<br>  <code>$apt-get update</code>                </p>
 <p>3、 安装docker最新版本<br> <code>$ apt-get install apt-transport-https</code><br>  <code>$ apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 36A1D7869245C8950F966E92D8576A8BA88D21E9</code></p>
@@ -110,7 +114,7 @@
 <p> <code>$ apt-get update</code><br> <code>$ apt-get install lxc-docker</code>           </p>
 <p>4、 <code>$ docker -v</code><br>查看docker安装成功情况  【用<code>$ docker logs $CONTAINER_ID</code> 来查看docker容器的运行日志】</p>
 <p>#####################################################################跳过该分割线<br>                     (中间小插曲)<br>5、 <code>$ docker pull sequenceiq/ambari：latest</code><br>下载容器：Ambari的最新镜像  </p>
-<p>6、 启动docker的守护进程<br>  <code>$ docker run daemon &amp;v</code><br>  【该命令一直启动着，终端不能关。可以用<code>$ nohup docker run daemon &amp;</code>后台运行】</p>
+<p>6、 启动docker的守护进程<br>  <code>$ docker run daemon &amp;</code><br>  【该命令一直启动着，终端不能关。可以用<code>$ nohup docker run daemon &amp;</code>后台运行】</p>
 <p>7、 <code>$ docker run sequenceiq/ambari:lastest</code><br> 在容器内运行镜像<br>在用这个命令运行镜像时会出现这样的错误：<br> <code>Failed to mount tmpfs at /run: Operation not permitted</code><br> <code>Failed to mount cgroup at /sys/fs/cgroup/systemd: Operation not permitted</code><br> <code>[!!!!] Failed to mount API filesystems, freezing</code></p>
 <p>这样在命令中增加参数，下面的命令即可解决这个问题<br><code>$ docker run -t -i --privileged=true  sequenceiq/ambari:lastest /bin/bash</code></p>
 <p>【如果仍存在问题试用这个命令】<br><code>$ docker run -t -i --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 sequenceiq/ambari:lastest /bin/bash</code></p>
@@ -133,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciye0iatd0001289n93y1befj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciye0nd9o0000xs9nwflyq7n7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Nicole/">Nicole</a></li></ul>
