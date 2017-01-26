@@ -102,29 +102,29 @@
 <pre><code>   开始pull新的镜像，根据描述采用 datalayer/ambari
 $ docker pull datalayer/ambari:latest         等待半小时左右
 </code></pre><p>6、                启动docker的守护进程<br>                     $ docker run daemon &amp;<br>                   【该命令一直启动着，终端不能关。可以用$nohup docker run daemon &amp;后台运行】</p>
-<p>7、                $ docker run -i -t –privileged=true datalayer/ambari:latest /bin/bash    在容器内运行镜像<br>                        bingo！！！！ 成功！<br>                       <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/3.png" alt=""></p>
-<pre><code>  有帮助的命令提示：
-  ![](Ubuntu下Docker-Ambari安装/4.png)
+<p>7、                $ docker run -i -t –privileged=true datalayer/ambari:latest /bin/bash    在容器内运行镜像<br>                        bingo！！！！ 成功！<br>                    <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/3.png" alt=""></p>
+<pre><code>有帮助的命令提示
+![](Ubuntu下Docker-Ambari安装/4.png)
 
-  配置ambari集群的key：
-  ![](Ubuntu下Docker-Ambari安装/5.png)
-#####################################################################################                      
-在进入ambari容器时有防火墙的一个Failure，后来发现这个可以忽略。。。。
-  ![](Ubuntu下Docker-Ambari安装/6.png)
+配置ambari集群的key
+![](Ubuntu下Docker-Ambari安装/5.png)
+ #####################################################################################                      
+ 在进入ambari容器时有防火墙的一个Failure，后来发现这个可以忽略。。。。
+![](Ubuntu下Docker-Ambari安装/6.png)
 
-   #######  但是！！！！！！！！！！！！！！ 管理ambari的web页面并不能访问！后来去找ambari官网看配置
-   【戳网址——&gt;http://platform.datalayer.io/guide/latest/docker/ambari/】
-     OK！发现要访问的网址是http://localhost:8080，而不是终端指导的 http://ambari.datalayer.io.local:8080。【多次测试发现localhost不是指本地ip，而是终端给出的172.17.0.2】
+    #######  但是！！！！！！！！！！！！！！ 管理ambari的web页面并不能访问！后来去找ambari官网看配置
+    【戳网址——&gt;http://platform.datalayer.io/guide/latest/docker/ambari/】
+      OK！发现要访问的网址是http://localhost:8080，而不是终端指导的 http://ambari.datalayer.io.local:8080。【多次测试发现localhost不是指本地ip，而是终端给出的172.17.0.2】
 
 
-   哈哈哈哈~~~最终ambari的管理页面如下
-  ![](Ubuntu下Docker-Ambari安装/7.png)
+    哈哈哈哈~~~最终ambari的管理页面如下
+   ![](Ubuntu下Docker-Ambari安装/7.png)
 </code></pre><p>【其他有用操作】<br>     退出一个容器： Ctrl+P 然后 Ctrl+Q</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydvzvng0001xk9nshubh3zl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydw45lx0001a09ndv009ugk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -160,7 +160,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/26/Hexo-Github-搭建个人博客/" data-id="ciydvzvn90000xk9n4x4secio" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/26/Hexo-Github-搭建个人博客/" data-id="ciydw45lr0000a09nl9iczmsv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -205,7 +205,7 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/25/hello-world/" data-id="ciydvzvnk0002xk9nszb0f99y" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/25/hello-world/" data-id="ciydw45m00002a09na8qdvyaa" class="article-share-link">Share</a>
       
       
     </footer>
