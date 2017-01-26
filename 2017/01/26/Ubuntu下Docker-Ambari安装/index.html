@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/4.png">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/5.png">
 <meta property="og:image" content="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/6.png">
-<meta property="og:updated_time" content="2017-01-26T05:21:47.971Z">
+<meta property="og:updated_time" content="2017-01-26T05:23:43.984Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu下Docker-Ambari安装">
 <meta name="twitter:description" content="在Ubuntu14.04虚拟机上使用Docker安装Ambari镜像过程：
@@ -108,8 +108,11 @@
 <p>4、                $ docker -v                             查看docker安装成功情况                         【用$ docker logs $CONTAINER_ID 来查看docker容器的运行日志】</p>
 <p>#####################################################################跳过该分割线<br>                     (中间小插曲)<br>5、                $ docker pull sequenceiq/ambari：latest    下载容器：Ambari的最新镜像  </p>
 <p>6、                启动docker的守护进程<br>                     $ docker run daemon &amp;v<br>                    【该命令一直启动着，终端不能关。可以用$ nohup docker run daemon &amp;后台运行】</p>
-<p>7、                $ docker run sequenceiq/ambari:lastest    在容器内运行镜像<br>                     在用这个命令运行镜像时会出现这样的错误：<br>           Failed to mount tmpfs at /run: Operation not permitted<br>                  Failed to mount cgroup at /sys/fs/cgroup/systemd: Operation not permitted<br>                  [!!!!] Failed to mount API filesystems, freezing<br>                     这样在命令中增加参数，下面的命令即可解决这个问题<br>                     $ docker run -t -i –privileged=true  sequenceiq/ambari:lastest /bin/bash</p>
-<pre><code>【如果仍存在问题试用这个命令】
+<p>7、                $ docker run sequenceiq/ambari:lastest    在容器内运行镜像<br>                     在用这个命令运行镜像时会出现这样的错误：<br>           Failed to mount tmpfs at /run: Operation not permitted<br>                  Failed to mount cgroup at /sys/fs/cgroup/systemd: Operation not permitted<br>                  [!!!!] Failed to mount API filesystems, freezing</p>
+<pre><code>      这样在命令中增加参数，下面的命令即可解决这个问题
+      $ docker run -t -i --privileged=true  sequenceiq/ambari:lastest /bin/bash
+
+【如果仍存在问题试用这个命令】
 
  $ docker run -t -i --privileged=true -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 80:80 sequenceiq/ambari:lastest /bin/bash
 </code></pre><p>8、               在我的虚拟机中还出现的问题是<br>                  <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/1.png" alt=""></p>
@@ -129,15 +132,15 @@ $ docker pull datalayer/ambari:latest         等待半小时左右
 <p>8、                    配置ambari集群的key<br>                     <img src="/2017/01/26/Ubuntu下Docker-Ambari安装/5.png" alt=""></p>
 <p>#########################<br>                        在进入ambari容器时有防火墙的一个Failure，后来发现这个可以忽略。。。。<img src="/2017/01/26/Ubuntu下Docker-Ambari安装/6.png" alt=""></p>
 <p>#######  但是！！！！！！！！！！！！！！ 管理ambari的web页面并不能访问！后来去找ambari官网看配置<br>                        【戳网址——&gt;<a href="http://platform.datalayer.io/guide/latest/docker/ambari/】" target="_blank" rel="external">http://platform.datalayer.io/guide/latest/docker/ambari/】</a><br>                         OK！发现要访问的网址是<a href="http://localhost:8080，而不是终端指导的" target="_blank" rel="external">http://localhost:8080，而不是终端指导的</a> <a href="http://ambari.datalayer.io.local:8080。【多次测试发现localhost不是指本地ip，而是终端给出的172.17.0.2】" target="_blank" rel="external">http://ambari.datalayer.io.local:8080。【多次测试发现localhost不是指本地ip，而是终端给出的172.17.0.2】</a></p>
-<pre><code>哈哈哈哈~~~最终ambari的管理页面如下
+<pre><code>    哈哈哈哈~~~最终ambari的管理页面如下
 
-  ![](Ubuntu下Docker-Ambari安装/7.png)
+![](Ubuntu下Docker-Ambari安装/7.png)
 </code></pre><p>【其他有用操作】<br>     退出一个容器： Ctrl+P 然后 Ctrl+Q</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydxnzco0001pk9n1h5ah19b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydxphxm00005g9ncxjklr7u" class="article-share-link">Share</a>
       
       
     </footer>
