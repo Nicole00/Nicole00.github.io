@@ -48,9 +48,9 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -114,7 +114,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciydzm4da0001wg9n5tiepv4n" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/01/26/Ubuntu下Docker-Ambari安装/" data-id="ciye00ten0002fw9ncw7h7xyj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -146,11 +146,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>首先我的windows10中已经装好了github，并且已有github账号。</p>
+<p><strong>一、在Git Bash里安装hexo</strong></p>
+<p><code>$ npm install -g hexo</code><br><code>$ hexo init</code><br><code>$ npm install</code><br><code>$ hexo generate</code><br><code>$ hexo server</code></p>
+<p><strong>二、在Github网站</strong></p>
+<p>1 创建新仓库，仓库名与用户名一致，aaa/aaa.github.io<br>2 将仓库地址放到dexo目录下的_config.yml中：<br>   <img src="/2017/01/26/Hexo-Github-搭建个人博客/1.png" alt="">    </p>
+<p>repo地址从github网站中找，这个地方众说纷纭，经测试，下面的地址是正确的。Type要写git 不是github。<br>   <img src="/2017/01/26/Hexo-Github-搭建个人博客/2.png" alt=""></p>
+<p><strong>三、设置SSH keys</strong></p>
+<p>1、  先将C:/User/username/.ssh里的文件删除，留下host文件<br>2、  <code>$ ssh-keygen -t rsa -C &quot;git-email&quot;</code>      邮箱是github关联的邮箱名，一直回车<br>3、 <code>$ ssh-agent -s</code><br>4、 <code>$ ssh-add ~/.ssh/id_rsa</code><br>有错误  <img src="/2017/01/26/Hexo-Github-搭建个人博客/3.png" alt=""><br>解决这个错误，运行命令<br><code>$ eval &#39;ssh-agent -s&#39;</code><br><code>$ ssh bash</code><br><code>$ ssh-add ~/.ssh/id_rsa</code></p>
+<p>5、拷贝ssh key （或者手动在文件中拷贝public key）<br><code>$ clip &lt; ~/.ssh/id_rsa.pub</code>       </p>
+<p><strong>四、为github添加ssh key</strong> </p>
+<p> 1、 github账号setting –  SSH key  – add     输入密码完成<br> 2、 测试下：<br> <code>$ssh -T git@github.com</code></p>
+<p><strong>五、最后步骤 (在hexo目录下用git bash)</strong></p>
+<p>1、  <code>$ hexo generate</code><br>2、  <code>$ hexo deploy</code></p>
+<p>输入 <a href="http://Nicole00.github.io/" target="_blank" rel="external">http://Nicole00.github.io/</a>   Bingo！完成~</p>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/26/Hexo-Github-搭建个人博客/" data-id="ciydzm4d50000wg9ncnm7ib2s" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/01/26/Hexo-Github-搭建个人博客/" data-id="ciye00ted0000fw9nql8c6bcj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -195,7 +209,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/01/25/hello-world/" data-id="ciydzm4e70002wg9nvo6ba7uk" class="article-share-link">Partager</a>
+      <a data-url="http://yoursite.com/2017/01/25/hello-world/" data-id="ciye00tej0001fw9nxpj5jf9p" class="article-share-link">Share</a>
       
       
     </footer>
@@ -230,7 +244,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
@@ -259,7 +273,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 John Doe<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
